@@ -1,13 +1,286 @@
+@font-face {
+  font-family: 'Quicksand';
+  src: url("./fonts/Quicksand-Light.woff2") format("woff2"), url("./fonts/Quicksand-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Quicksand';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+ monospace;
+}
+
+.loader,
+.loader:before,
+.loader:after {
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation: load7 1.8s infinite ease-in-out;
+  animation: load7 1.8s infinite ease-in-out;
+}
+
+.loader {
+  color: #eb7d00;
+  font-size: 10px;
+  margin: 80px auto;
+  position: relative;
+  text-indent: -9999em;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+.loader:before,
+.loader:after {
+  content: '';
+  position: absolute;
+  top: 0;
+}
+
+.loader:before {
+  left: -3.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.loader:after {
+  left: 3.5em;
+}
+
+@-webkit-keyframes load7 {
+  0%,
+  80%,
+  100% {
+    -webkit-box-shadow: 0 2.5em 0 -1.3em;
+            box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    -webkit-box-shadow: 0 2.5em 0 0;
+            box-shadow: 0 2.5em 0 0;
+  }
+}
+
+@keyframes load7 {
+  0%,
+  80%,
+  100% {
+    -webkit-box-shadow: 0 2.5em 0 -1.3em;
+            box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    -webkit-box-shadow: 0 2.5em 0 0;
+            box-shadow: 0 2.5em 0 0;
+  }
+}
+
+.App {
+  min-height: 100vh;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.App div.main {
+  height: 40vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.App div.main button {
+  margin-bottom: 10px;
+}
+
+.App div.main div.search {
+  margin-top: 5px;
+  width: 80%;
+  max-width: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 3px solid orange;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 0px;
+}
+
+.App div.main div.search input {
+  width: 250px;
+  border: none;
+  border-radius: 10px;
+  height: 30px;
+  outline: none;
+  text-align: center;
+  font-size: 15px;
+  font-family: inherit;
+  margin: 0px;
+}
+
+.App div.main div.search button {
+  margin: 0px;
+  border: none;
+  border-radius: 0px 5px 5px 0px;
+  height: 40px;
+}
+
+.App div.main button {
+  width: 140px;
+  background-color: orange;
+  outline: none;
+  color: black;
+  border-radius: 10px;
+  border: none;
+  height: 40px;
+  font-size: 20px;
+  font-family: inherit;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.App div.main button:active {
+  background-color: red;
+}
+
+.App div.main button:disabled {
+  background-color: #f8b364;
+}
+
+.App div.graph {
+  background-color: rgba(243, 199, 116, 0.7);
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.App div.graph div.main-graph {
+  background-color: white;
+  width: 350px;
+  height: 80%;
+  border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.App div.graph div.main-graph h3.red {
+  color: red;
+}
+
+.App div.modal {
+  background-color: rgba(245, 186, 76, 0.7);
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.App div.modal div.card {
+  width: 80%;
+  max-width: 600px;
+  height: 80%;
+  background-color: #f3a616;
+  border-radius: 20px;
+}
+
+.App div.modal h2 {
+  font-size: 30px;
+}
+
+.App div.modal h3.red {
+  font-size: 25px;
+  color: red;
+}
+
+.App div.modal ul {
+  list-style-type: none;
+  padding: 0px;
+}
+
+.App div.modal ul li {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.App div.output {
+  height: 40vh;
+}
+
+.App h3.error {
+  color: red;
+  font-weight: bold;
+}
+
+.App > h3 {
+  font-size: 30px;
 }
