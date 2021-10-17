@@ -5,6 +5,7 @@ class Utility {
         url, setLoading, setData, setError,
         setErrorMessage, graphData, axios,
         setGraphData, history, setHistory,
+        apiKey
     ) {
         this.url= url;
         this.setLoading = setLoading;
@@ -16,6 +17,7 @@ class Utility {
         this.history =  history;
         this.setHistory = setHistory;
         this.axios = axios;
+        this.apiKey = apiKey;
     }
 
     async fetchData(url = this.url) {
@@ -60,7 +62,7 @@ class Utility {
     async fetchGraphData(lat, lon) {
         const date = Math.floor((Date.now() - 5 * 24 * 60 * 60 * 1000)/1000);
 
-        const url = `https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=${ lat }&lon=${ lon }&dt=${ date }&appid=cdb206b95de22a788771fbf96885d98b`
+        const url = `https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=${ lat }&lon=${ lon }&dt=${ date }&appid=${ this.apiKey }`
         try {
             const response = await this.axios.get( url );
 
@@ -93,7 +95,7 @@ class Utility {
       
                 // extract the needed parameter [ lat, long ]
                 const { latitude, longitude } = position.coords;
-                const url = `${ urlFragment }lat=${ latitude }&lon=${ longitude }&appid=cdb206b95de22a788771fbf96885d98b`;
+                const url = `${ urlFragment }lat=${ latitude }&lon=${ longitude }&appid=${ this.apiKey }`;
         
                 this.setHistory([ ...this.history, 'current location' ]);
       

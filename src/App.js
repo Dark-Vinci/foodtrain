@@ -11,6 +11,8 @@ import useToggle from './hooks/toggle';
 
 import Utility from './utils/classUtils';
 
+const API_KEY = process.env.REACT_APP_API_KEY;
+
 function App() {
   // needed state for the application
   const [ input, setInput ] = useState('');
@@ -25,13 +27,13 @@ function App() {
   const [ openModal, modalOpenHandler ] = useToggle();
   const [ showGraph, graphModalHandler ] = useToggle();
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${ input }&appid=cdb206b95de22a788771fbf96885d98b`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${ input }&appid=${ API_KEY }`;
 
   const utility = new Utility(
     url, setLoading, setData,
     setError, setErrorMessage,
     graphData, axios, setGraphData,
-    history, setHistory
+    history, setHistory, API_KEY
   )
 
   // function that set the input value
